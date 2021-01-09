@@ -89,8 +89,8 @@
 
 		simplyCountdown('.simply-countdown-one', {
 			year: "2021",
-			month: "02",
-			day: "05"
+			month: "01",
+			day: "15"
 		});
 
 	};
