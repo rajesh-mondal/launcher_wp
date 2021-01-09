@@ -4,13 +4,18 @@
  */
 ?>
 <?php
+the_post();
 get_header();
 ?>
 <body>
 <div class="fh5co-loader"></div>
 
-<aside id="fh5co-aside" role="sidebar" class="text-center" style="background-image: url(images/img_bg_1_gradient.jpg);">
-	<h1 id="fh5co-logo"><a href="index.html">launcher</a></h1>
+<aside id="fh5co-aside" role="sidebar" class="text-center home-side">
+	<h1 id="fh5co-logo">
+        <a href="<?php echo site_url(); ?>">
+            <?php bloginfo("name"); ?>
+        </a>
+    </h1>
 </aside>
 
 <div id="fh5co-main-content">
@@ -23,8 +28,8 @@ get_header();
 					<div class="row">
 						<div class="col-lg-7">
 							<div class="fh5co-intro animate-box">
-								<h2>Launcher Launching Soon!</h2>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+								<h2><?php the_title(); ?></h2>
+								<?php the_content(); ?>
 							</div>
 						</div>
 
@@ -47,16 +52,18 @@ get_header();
 	<div id="fh5co-footer">
 		<div class="row">
 			<div class="col-md-6">
-				<ul id="fh5co-social">
-					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-instagram"></i></a></li>
-					<li><a href="#"><i class="icon-google-plus"></i></a></li>
-					<li><a href="#"><i class="icon-pinterest-square"></i></a></li>
-				</ul>
+                <?php
+                if (is_active_sidebar("footer-left")){
+                    dynamic_sidebar("footer-left");
+                }
+                ?>
 			</div>
 			<div class="col-md-6 fh5co-copyright">
-				<p>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></p>
+				<?php
+				if (is_active_sidebar("footer-right")){
+					dynamic_sidebar("footer-right");
+				}
+				?>
 			</div>
 		</div>
 	</div>
